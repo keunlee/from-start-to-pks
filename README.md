@@ -4,13 +4,28 @@ Author: Keun Lee (@keunlee)
 
 # From Start to PKS
 
-This guide details a workflow from the starting phases of application development, Dockerizing, deployment to a local K8S cluster, to deployment onto Pivotal's PKS. This guide presents to you one of many options and routes that you can take to organizing your development workflow. 
+This guide details a workflow from the starting phases of application development, dockerizing applications, deployment to a local Kubernetes cluster, to deployment onto Pivotal's PKS.
 
-https://github.com/keunlee/from-start-to-pks
+This guide presents to you one of many options and routes that you can take to organizing your development workflow and covers the following sections:
+
+* Section 1
+    * Local application development and testing
+    * Deployment and Validation against a local Docker runtime
+* Section 2
+    * Deployment and Validation against a local Kubernetes cluster - Minikube
+* Section 3
+    * Deployment and Validation against a Kubernetes cluster - PKS
+
+The supplied code in this guide may be found at the following Github repository: https://github.com/keunlee/from-start-to-pks
+
+The supplied code details the following:
+
+* A Spring Boot Microservice Application with Mongodb as an underlying datasource. This Microservice allows end-users to run CRUD methods for a sample model, "Styles".
+* An Angular 4 application which consumes the Microservice, and allows end-users to add new Style models 
 
 # Assumptions
 
-* You are running all your development from a Mac or other Unix flavored OS
+You are running all your development from a Mac or other Unix flavored OS
 
 # Pre-requisites
 
@@ -50,25 +65,6 @@ __Kubernetes Ecosystem__
 * kubectl cheatsheet - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 * kompose - https://github.com/kubernetes/kompose/blob/master/docs/user-guide.md
 * minikube - https://github.com/kubernetes/minikube
-
-# Overview
-
-This guide goes over in detail a development workflow which covers the following sections: 
-
-* Section 1
-    * Local application development and testing
-    * Deployment and Validation against a local Docker runtime
-* Section 2
-    * Deployment and Validation against a local Kubernetes cluster - Minikube
-* Section 3
-    * Deployment and Validation against a Kubernetes cluster - PKS
-
-The supplied code in this guide may be found at the following Github repository: https://github.com/keunlee/from-start-to-pks
-
-The supplied code details the following:
-
-* A Spring Boot Microservice Application with Mongodb as an underlying datasource. This Microservice allows end-users to run CRUD methods for a sample model, "Styles".
-* An Angular 4 application which consumes the Microservice, and allows end-users to add new Style models 
 
 # Development and Deployment Workflow Summary
 
@@ -133,6 +129,8 @@ kubectl create -f k8s-kompose.yaml
 __Step 8. Create and deploy a Kubernetes Ingress yaml (i.e. k8s-ingress.yaml) to a local Kubernetes cluster__
 
 __Step 9. Deploy to a PKS Kubernetes Cluster__
+
+At this point, you may want to further tweak your yaml files to accommodate for requirements and/or additional features that you want in your cluster (i.e. autoscaling, Stateful Sets, Storage Classes, etc. etc.)
 
 # Section 1: Development and Containerization
 
