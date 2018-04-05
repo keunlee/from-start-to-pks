@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primaryColor: #2f3237;
+$secondaryColor: #73cde4;
+$backgroundGray: #f2f2f2;
+$imagePickerBackground: #77cee3;
+$copyColor: #2f3237;
+$submitButton: #6fcce5;
+$submitButtonDisabled: rgba(111, 204, 229, 0.35);
+
+@font-face {
+    font-family: 'Geomanist';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/assets/fonts/Geomanist-Regular.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'Geomanist';
+    font-weight: 500;
+    font-style: normal;
+    src: url('/assets/fonts/Geomanist-Medium.otf') format('otf');
+}
+
+body {
+    margin: 0;
+    font-family: 'Geomanist', sans-serif;
+}
+
+.image-input {
+    height: 100%;
+    width: 100%;
+}
+
+.over {
+    background-color: rgba(119, 206, 227, 0.5) !important;
+}
+
+.content[_ngcontent-c2] {
+  height: 100% !important;
+}

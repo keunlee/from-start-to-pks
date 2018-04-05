@@ -1,0 +1,61 @@
+@import '../styles';
+
+.outer-wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    overflow-y: scroll;
+}
+
+.top-container {
+    height: 265px;
+    background-color: $primaryColor;
+    flex-direction: column;
+    display: flex;
+    padding-left: 122px;
+    padding-right: 122px;
+    padding-top: 64px;
+}
+
+.bottom-container {
+    height: 832px;
+    display: flex;
+    background-color: $backgroundGray;
+    justify-content: center;
+}
+
+.modal {
+    position: absolute;
+    top: 193px;
+    width: 780px;
+    height: 785px;
+    background-color: white;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 6px 0 rgba(0, 0, 0, 0.26);
+    overflow: hidden;
+}
+
+.title {
+    height: 43px;
+    font-size: 36px;
+    color: white;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.subtitle {
+    height: 19px;
+    font-size: 16px;
+    color: white;
+    font-weight: normal
+}
+
+.solstice-logo {
+    width: 160px;
+    align-self: flex-end;
+    margin-bottom: 47px;
+}

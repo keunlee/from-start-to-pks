@@ -1,0 +1,13 @@
+security:
+  basic:
+    enabled: false
+
+management:
+  security:
+    enabled: false
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/solsticedb
+

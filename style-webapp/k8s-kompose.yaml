@@ -1,0 +1,52 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yaml --out kompose.yaml
+      kompose.version: 1.9.0 (093c756)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: style-webapp
+    name: style-webapp
+  spec:
+    ports:
+    - name: "8085"
+      port: 8085
+      targetPort: 80
+    selector:
+      io.kompose.service: style-webapp
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yaml --out kompose.yaml
+      kompose.version: 1.9.0 (093c756)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: style-webapp
+    name: style-webapp
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: style-webapp
+      spec:
+        containers:
+        - image: style-webapp-image:v1
+          name: style-webapp
+          ports:
+          - containerPort: 80
+          resources: {}
+        restartPolicy: Always
+  status: {}
+kind: List
+metadata: {}
+

@@ -1,0 +1,48 @@
+<form class='form' [formGroup]="profileForm" (ngSubmit)="submitProfile()">
+  <div class='input-row short-row'>
+    <span class="form-label org-name">Organization Id:</span>
+    <input type="text" class="text-input" formControlName="orgId" placeholder="Enter Organization Id" />
+  </div>
+  <div class='input-row short-row'>
+    <span class="form-label org-name">Organization Name:</span>
+    <input type="text" class="text-input" formControlName="orgName" placeholder="Enter Organization Name" title="Enter Organization Name" />
+  </div>
+  <div class='input-row short-row'>
+    <span class="form-label theme-label">Theme Color:</span>
+    <input [(colorPicker)]="profileForm.get('color').value"
+           [style.background]="profileForm.get('color').value"
+           class="color-picker"
+           formControlName="color"
+           title="Enter Theme Color" />
+    <input type="text" class="text-input" [style.width.px]="86" readonly [value]="profileForm.get('color').value" title="Readonly Theme Color" />
+  </div>
+  <div class='input-row logo-row'>
+    <span class="form-label org-name">Organization Logo:</span>
+    <div class="image-input-container" [ngStyle]="{'background-color': profileForm.get('logo').value ? 'white' : '#f2f2f2'}">
+      <file-drop customstyle="image-input file-drop-zone" (onFileDrop)="onFileDrop($event)"
+        (onFileOver)="onFileOver($event)" (onFileLeave)="onFileLeave($event)">
+          <div class="image-input inner-item" *ngIf="!profileForm.get('logo').value && !isDragover">
+            <input id="test-id" formControlName="imageFile" type="file" accept="image/*" [ngStyle]="{'display': 'none'}" />
+            <span class="add-image-text">Add an image<br>by dropping it here</span>
+            <span class="or-text">or</span>
+            <button onclick="document.getElementById('test-id').click();" class="browse-button" type="button">BROWSE FILES</button>
+          </div>
+          <div class="image-input inner-item dragover" *ngIf="!profileForm.get('logo').value && isDragover">
+            <img class="upload-icon" src='assets/upload-icon.png' />
+            <span>Drop to upload</span>
+          </div>
+          <img class="logo-image inner-item" *ngIf="profileForm.get('logo').value" src="{{profileForm.get('logo').value}}" />
+      </file-drop>
+    </div>
+  </div>
+
+  <div class="buttons-container">
+    <button class="reset-button" type="button" (click)="resetForm()">Reset</button>
+    <button class="save-button" type="submit" [disabled]="!formIsValid()">Save</button>
+  </div>
+
+  <div class="submission-status-container">
+    <span *ngIf="submissionStatus === statuses.error" class="submission-status-error">Unable to submit profile. Please try again.</span>
+    <span *ngIf="submissionStatus === statuses.success" class="submission-status-success">Profile Submitted Successfully</span>
+  </div>
+</form>
